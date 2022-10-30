@@ -7,12 +7,12 @@
 
 .butonDelete {
     height: 100%;
-    margin-left: 20px;
     font-size: 20px;
     border-radius: 7px;
     cursor: pointer;
     border: 1px solid #000;
     outline: 1px solid #000;
+    margin-left: 20px;
 }
 
 .butonDelete:hover {
@@ -23,6 +23,10 @@
 }
 
 
-/* .number {
+.number {
     margin-left: 10px;
-} */
+}
+
+.id {
+    margin-right: 10px;
+}

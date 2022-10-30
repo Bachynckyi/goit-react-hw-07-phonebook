@@ -11,3 +11,28 @@ export const getContacts = createAsyncThunk("contacts/getContacts", async () => 
     return error;
   }
 });
+
+export const addContact = createAsyncThunk(
+  'contacts/addContact',
+  async newState => {
+    try {
+      const contact = await contactsAPI.addContact(newState);
+      return contact;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
+export const deleteContact = createAsyncThunk(
+  'contacts/deleteContact',
+  async id => {
+    try {
+      const deletedcontact = await contactsAPI.deleteContact(id);
+      return deletedcontact.id;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+

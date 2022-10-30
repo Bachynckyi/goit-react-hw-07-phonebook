@@ -15,7 +15,7 @@ export const ContactList = () => {
   }, [dispatch]);
 
   return (
-    <ul className={css.contactList}>
+    <ol className={css.contactList}>
         {filteredList.length !== 0 ? (
           filteredList.map(dataItem => {
           return (
@@ -27,7 +27,7 @@ export const ContactList = () => {
           />
           )}))
           : (<li>There is no one contact</li>)}
-    </ul>
+    </ol>
   );
 };
 
