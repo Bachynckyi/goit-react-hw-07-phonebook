@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from 'react-redux';
 import * as operations from 'redux/operations';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const ContactForm = () => {
-
-    const dispath = useDispatch();
+    const dispatch = useDispatch();
 
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
@@ -32,7 +32,8 @@ export const ContactForm = () => {
             return alert(`${name} is already in contacts`);
         };      
         const newState = { id: nanoid(), name, phone};
-        dispath(operations.addContact(newState));
+        dispatch(operations.addContact(newState));
+        Notify.success('Сontact added successfully', {position: 'center-top'});
         reset();
     };
 
