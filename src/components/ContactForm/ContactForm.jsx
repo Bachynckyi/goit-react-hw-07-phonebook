@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from 'react-redux';
 import * as operations from 'redux/operations';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const ContactForm = () => {
     const dispatch = useDispatch();
@@ -33,7 +32,6 @@ export const ContactForm = () => {
         };      
         const newState = { id: nanoid(), name, phone};
         dispatch(operations.addContact(newState));
-        Notify.success('Сontact added successfully', {position: 'center-top'});
         reset();
     };
 

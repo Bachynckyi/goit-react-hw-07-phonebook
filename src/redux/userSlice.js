@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getContacts, addContact, deleteContact } from "./operations";
 import { Loading } from "notiflix";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const userSlice = createSlice({
     name: 'contacts',
@@ -44,11 +45,13 @@ export const userSlice = createSlice({
         state.items.push(action.payload);
         state.isLoading = false;
         Loading.remove();
+        Notify.success('Сontact added successfully', {position: 'center-top'});
       },
       [addContact.rejected](state, action){
         state.isLoading = false;
         state.error = action.payload;
         Loading.remove();
+        Notify.warning('Ooops, something wrong', {position: 'center-top'});
       },
       [deleteContact.pending](state){
         state.isLoading = true;
@@ -61,11 +64,13 @@ export const userSlice = createSlice({
         state.items = state.items.filter(({ id }) => id !== action.payload);
         state.isLoading = false;
         Loading.remove();
+        Notify.success('Сontact deleted successfully', {position: 'center-top'});
       },
       [deleteContact.rejected](state, action){
         state.isLoading = false;
         state.error = action.payload;
         Loading.remove();
+        Notify.warning('Ooops, something wrong', {position: 'center-top'});
       },
     },
 });
